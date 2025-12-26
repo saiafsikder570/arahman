@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Abdur Rahman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { --primary-yellow: #fcdb66; --primary-black: #000000; --dark-gray: #111111; --accent-green: #87c03d; --text-white: #ffffff; --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: var(--primary-black); color: var(--text-white); overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Nav & Footer (Standard) */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: rgba(0,0,0,0.9); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--dark-gray); }
+        .logo { font-size: 24px; font-weight: 900; color: var(--primary-yellow); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .dropdown { position: relative; cursor: pointer; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: var(--dark-gray); min-width: 200px; z-index: 1; border: 1px solid var(--glass-border); }
+        .dropdown-content a { padding: 12px 16px; display: block; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown:hover .dropdown-content { display: block; }
+        .hamburger { display: none; font-size: 28px; color: var(--primary-yellow); cursor: pointer; }
+
+        /* Hero Banner */
+        .resume-hero { height: 60vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #222, #000); padding-top: 80px; text-align: center; }
+        .resume-title { font-size: 50px; font-weight: 900; color: var(--text-white); margin-bottom: 10px; animation: fadeIn 2s; }
+        .resume-subtitle { color: var(--accent-green); letter-spacing: 3px; font-size: 18px; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Resume Content Layout */
+        .resume-container { display: flex; max-width: 1200px; margin: 0 auto; padding: 60px 20px; gap: 50px; position: relative; }
+        
+        /* Left Sticky Sidebar */
+        .resume-left {
+            width: 300px;
+            height: fit-content;
+            position: sticky;
+            top: 100px; /* Sticks below navbar */
+            text-align: center;
+            background: var(--dark-gray);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .resume-profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-yellow);
+            object-fit: cover;
+            margin-bottom: 20px;
+            content: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop');
+        }
+
+        .resume-name { font-size: 24px; font-weight: 700; margin-bottom: 5px; }
+        .resume-role { color: var(--accent-green); font-size: 14px; margin-bottom: 20px; }
+        
+        /* Right Content (ATS Style) */
+        .resume-right { flex: 1; }
+        
+        .cv-section { margin-bottom: 50px; border-left: 2px solid var(--glass-border); padding-left: 30px; position: relative; }
+        .cv-section::before {
+            content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--primary-yellow); border-radius: 50%;
+        }
+
+        .cv-title { font-size: 28px; color: var(--primary-yellow); margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+        .cv-title i { font-size: 20px; }
+
+        .cv-item { margin-bottom: 30px; }
+        .cv-item h3 { font-size: 20px; font-weight: 700; color: #fff; }
+        .cv-item .date { font-size: 14px; color: var(--accent-green); margin-bottom: 10px; display: block; font-weight: 600; }
+        .cv-item p { color: #ccc; font-size: 15px; line-height: 1.6; text-align: justify; }
+        
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .tag { background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 5px; font-size: 13px; color: #fff; border: 1px solid var(--glass-border); }
+
+        /* Footer */
+        footer { background-color: var(--dark-gray); padding: 50px 5%; display: flex; flex-wrap: wrap; gap: 30px; border-top: 1px solid var(--glass-border); margin-top: 0px;}
+        .footer-col { flex: 1; min-width: 250px; }
+        .footer-col h3 { color: var(--primary-yellow); margin-bottom: 15px; }
+        .footer-col ul li { padding: 5px 0; color: #ccc; }
+        .social-icons { display: flex; gap: 15px; margin-top: 15px; }
+        .social-icons a { width: 40px; height: 40px; background: #222; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #fff; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; right: 0; background: var(--dark-gray); width: 70%; padding: 20px; }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            
+            .resume-container { flex-direction: column; }
+            .resume-left { width: 100%; position: relative; top: 0; margin-bottom: 40px; }
+            .cv-section { padding-left: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Abdur Rahman.</div>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Portfolio <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="graphic.html">Graphic Design</a>
+                    <a href="video.html">Video Editing</a>
+                    <a href="marketing.html">Meta Marketing</a>
+                </div>
+            </li>
+            <li><a href="resume.html" style="color: var(--primary-yellow);">Resume</a></li>
+            <li><a href="contact.html">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <div class="resume-hero">
+        <div>
+            <h4 class="resume-subtitle">PROFESSIONAL HISTORY</h4>
+            <h1 class="resume-title">Resume & <br> Certification</h1>
+        </div>
+    </div>
+
+    <div class="resume-container">
+        <!-- Sticky Left Side -->
+        <aside class="resume-left">
+            <img class="resume-profile-img" alt="Abdur Rahman">
+            <h2 class="resume-name">Abdur Rahman</h2>
+            <p class="resume-role">Video Editor | Graphic Designer <br> Digital Marketer</p>
+            <div style="margin-top: 20px; border-top: 1px solid #333; padding-top: 20px;">
+                <p style="font-size: 13px; color: #aaa; margin-bottom: 10px;"><i class="fas fa-envelope" style="color: var(--accent-green);"></i> email@example.com</p>
+                <p style="font-size: 13px; color: #aaa;"><i class="fas fa-phone" style="color: var(--accent-green);"></i> +880 1234 567890</p>
+            </div>
+        </aside>
+
+        <!-- Right Content Side -->
+        <main class="resume-right">
+            
+            <!-- Summary -->
+            <div class="cv-section">
+                <h2 class="cv-title"><i class="fas fa-user-circle"></i> Professional Summary</h2>
+                <div class="cv-item">
+                    <p>Highly creative and multitalented Digital Marketer, Video Editor, and Graphic Designer with 6+ months of experience. Passionate about creating visually stunning designs and engaging video content that drives business growth. Expert in Adobe Creative Suite and Meta Advertising platforms.</p>
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="cv-section">
+                <h2 class="cv-title"><i class="fas fa-briefcase"></i> Work Experience</h2>
+                
+                <div class="cv-item">
+                    <h3>Video Editor & Motion Designer</h3>
+                    <span class="date">2024 - Present | Freelance</span>
+                    <p>Produced over 45+ high-quality video projects for various clients on YouTube and Social Media. Specialized in cinematic storytelling, color grading, and engaging motion graphics that increased viewer retention by 30%.</p>
+                </div>
+
+                <div class="cv-item">
+                    <h3>Graphic Designer</h3>
+                    <span class="date">2023 - 2024 | Agency Name</span>
+                    <p>Designed social media posters, business cards, and brochures. Collaborated with marketing teams to create visual identities that align with brand guidelines.</p>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="cv-section">
+                <h2 class="cv-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="cv-item">
+                    <h3>Bachelor of Arts</h3>
+                    <span class="date">2020 - 2024 | National University</span>
+                    <p>Concentration in [Your Subject]. Participated in various creative clubs and leadership activities.</p>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="cv-section">
+                <h2 class="cv-title"><i class="fas fa-tools"></i> Technical Skills</h2>
+                <div class="cv-item">
+                    <div class="skill-tags">
+                        <span class="tag">Adobe Premiere Pro</span>
+                        <span class="tag">After Effects</span>
+                        <span class="tag">Photoshop</span>
+                        <span class="tag">Illustrator</span>
+                        <span class="tag">Facebook Ads Manager</span>
+                        <span class="tag">Google Analytics (GTM)</span>
+                        <span class="tag">SEO Basics</span>
+                        <span class="tag">Figma</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="cv-section" style="border-left: none;">
+                <h2 class="cv-title"><i class="fas fa-certificate"></i> Certifications</h2>
+                <div class="cv-item">
+                    <h3>Advanced Video Editing Course</h3>
+                    <span class="date">2023 | Institute Name</span>
+                </div>
+                <div class="cv-item">
+                    <h3>Digital Marketing Masterclass</h3>
+                    <span class="date">2023 | Google Garage</span>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-col">
+            <h2>Abdur Rahman</h2>
+            <p style="margin-top: 10px; font-size: 14px; color: #aaa;">Ready to grow your business?</p>
+            <a href="#" style="color: var(--accent-green); margin-top: 10px; display: inline-block;">Let's Discuss Project</a>
+        </div>
+        <div class="footer-col">
+            <h3>My Services</h3>
+            <ul>
+                <li>Graphic Design</li>
+                <li>Video Editing</li>
+                <li>Meta Marketing</li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Social Media</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
