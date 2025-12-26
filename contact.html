@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Me - Abdur Rahman</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root { --primary-yellow: #fcdb66; --primary-black: #000000; --dark-gray: #111111; --accent-green: #87c03d; --text-white: #ffffff; --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1); }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+body { background-color: var(--primary-black); color: var(--text-white); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: rgba(0,0,0,0.9); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--dark-gray); }
+.logo { font-size: 24px; font-weight: 900; color: var(--primary-yellow); }
+.nav-links { display: flex; gap: 30px; }
+.nav-links a { font-weight: 600; transition: 0.3s; }
+.nav-links a:hover { color: var(--accent-green); }
+.dropdown { position: relative; cursor: pointer; }
+.dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: var(--dark-gray); min-width: 200px; z-index: 1; border: 1px solid var(--glass-border); }
+.dropdown-content a { padding: 12px 16px; display: block; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.dropdown:hover .dropdown-content { display: block; }
+.hamburger { display: none; font-size: 28px; color: var(--primary-yellow); cursor: pointer; }
+
+.contact-hero { height: 60vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #222, #000); padding-top: 80px; text-align: center; }
+.contact-title { font-size: 60px; font-weight: 900; color: var(--text-white); animation: pulse 2s infinite; }
+.contact-subtitle { color: var(--accent-green); letter-spacing: 3px; font-size: 18px; margin-bottom: 10px; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+
+.contact-container {
+display: flex;
+justify-content: center;
+gap: 30px;
+padding: 50px 5%;
+margin-bottom: 50px;
+flex-wrap: wrap;
+}
+
+.contact-box {
+flex: 1;
+min-width: 300px;
+background: var(--glass-bg);
+backdrop-filter: blur(10px);
+border: 1px solid var(--glass-border);
+padding: 40px 20px;
+text-align: center;
+border-radius: 20px;
+transition: 0.5s;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+}
+
+.contact-box:hover {
+transform: translateY(-10px);
+background: rgba(255,255,255,0.1);
+border-color: var(--primary-yellow);
+}
+
+.c-icon { font-size: 50px; color: var(--accent-green); margin-bottom: 20px; transition: 0.5s; }
+.contact-box:hover .c-icon { transform: scale(1.2); color: var(--primary-yellow); }
+
+.c-head { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+.c-text { color: #ccc; font-size: 14px; }
+
+/* Animation for boxes appearing */
+.contact-box { animation: slideUp 1s ease-out; animation-fill-mode: backwards; }
+.cb-1 { animation-delay: 0.2s; }
+.cb-2 { animation-delay: 0.4s; }
+.cb-3 { animation-delay: 0.6s; }
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+footer { background-color: var(--dark-gray); padding: 50px 5%; display: flex; flex-wrap: wrap; gap: 30px; border-top: 1px solid var(--glass-border); margin-top: 50px;}
+.footer-col { flex: 1; min-width: 250px; }
+.footer-col h3 { color: var(--primary-yellow); margin-bottom: 15px; }
+.social-icons { display: flex; gap: 15px; margin-top: 15px; }
+.social-icons a { width: 40px; height: 40px; background: #222; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #fff; }
+
+@media (max-width: 768px) {
+.nav-links { display: none; flex-direction: column; position: absolute; top: 70px; right: 0; background: var(--dark-gray); width: 70%; padding: 20px; }
+.nav-links.active { display: flex; }
+.hamburger { display: block; }
+.contact-title { font-size: 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">Abdur Rahman.</div>
+<div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li class="dropdown">
+<a href="#">Portfolio <i class="fas fa-caret-down"></i></a>
+<div class="dropdown-content">
+<a href="graphic.html">Graphic Design</a>
+<a href="video.html">Video Editing</a>
+<a href="marketing.html">Meta Marketing</a>
+</div>
+</li>
+<li><a href="resume.html">Resume</a></li>
+<li><a href="contact.html" style="color: var(--primary-yellow);">Contact Me</a></li>
+</ul>
+</nav>
+
+<div class="contact-hero">
+<div>
+<h4 class="contact-subtitle">GET IN TOUCH</h4>
+<h1 class="contact-title">Contact Me</h1>
+</div>
+</div>
+
+<div class="contact-container">
+<!-- Location Box -->
+<!-- Link points to Google Maps for Chandpur, Bangladesh -->
+<a href="https://www.google.com/maps/place/Chandpur" target="_blank" class="contact-box cb-1">
+<i class="fas fa-map-marker-alt c-icon"></i>
+<h3 class="c-head">Location</h3>
+<p class="c-text">Chandpur, Bangladesh</p>
+<p class="c-text" style="font-size: 12px; margin-top: 5px; color: var(--accent-green);">View on Map</p>
+</a>
+
+<!-- WhatsApp Box -->
+<!-- Replace 8801600807723 with your actual number -->
+<a href="https://wa.me/8801600807723" target="_blank" class="contact-box cb-2">
+<i class="fab fa-whatsapp c-icon"></i>
+<h3 class="c-head">WhatsApp</h3>
+<p class="c-text">+8801600807723</p>
+<p class="c-text" style="font-size: 12px; margin-top: 5px; color: var(--accent-green);">Chat Now</p>
+</a>
+
+<!-- Email Box -->
+<a href="mdabdurrahmankachua@gmail.com" class="contact-box cb-3">
+<i class="fas fa-envelope c-icon"></i>
+<h3 class="c-head">Email Me</h3>
+<p class="c-text">mdabdurrahmankachua@gmail.com</p>
+<p class="c-text" style="font-size: 12px; margin-top: 5px; color: var(--accent-green);">Send Message</p>
+</a>
+</div>
+
+<footer>
+<div class="footer-col">
+<h2>Abdur Rahman</h2>
+<p style="margin-top: 10px; font-size: 14px; color: #aaa;">Ready to grow your business?</p>
+<a href="#" style="color: var(--accent-green); margin-top: 10px; display: inline-block;">Let's Discuss Project</a>
+</div>
+<div class="footer-col">
+<h3 style="color: #fff;">My Services</h3>
+<ul style="list-style: none;">
+<li style="color: #ccc;">Graphic Design</li>
+<li style="color: #ccc;">Video Editing</li>
+<li style="color: #ccc;">Meta Marketing</li>
+</ul>
+</div>
+<div class="footer-col">
+<h3 style="color: #fff;">Social Media</h3>
+<div class="social-icons">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+</footer>
+
+<script>
+function toggleMenu() {
+document.querySelector('.nav-links').classList.toggle('active');
+}
+</script>
+</body>
+</html>
